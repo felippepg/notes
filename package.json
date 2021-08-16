@@ -1,0 +1,33 @@
+{
+  "name": "notes",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "start:dev": "nodemon index.js --ignore __test__",
+    "lint": "eslint ./src --ext .js",
+    "lint:fix": "eslint ./src --ext .js --fix",
+    "test": "jest"
+  },
+  "repository": "https://github.com/felippepg/notes",
+  "author": "Felippe Pires <fpires.fga@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "mysql2": "^2.3.0",
+    "sequelize": "^6.6.5",
+    "sequelize-cli": "^6.2.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.1",
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.24.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "jest": "^27.0.6",
+    "nodemon": "^2.0.12"
+  }
+}
