@@ -7,7 +7,9 @@
     "start:dev": "nodemon index.js --ignore __test__",
     "lint": "eslint ./src --ext .js",
     "lint:fix": "eslint ./src --ext .js --fix",
-    "test": "jest"
+    "pretest": "sequelize db:migrate",
+    "test": "jest",
+    "posttest": "sequelize db:migrate:undo:all"
   },
   "repository": "https://github.com/felippepg/notes",
   "author": "Felippe Pires <fpires.fga@gmail.com>",
@@ -28,6 +30,7 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
     "jest": "^27.0.6",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "supertest": "^6.1.5"
   }
 }
