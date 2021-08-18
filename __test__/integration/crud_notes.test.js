@@ -86,4 +86,18 @@ describe('Crud Note', () => {
             }
         )
     })
+
+    it('Should delete a note', async () => {
+        const note1 = await Note.create({
+            title: 'teste1',
+            body: 'corpo1',
+        });
+
+        const response = await request(app)
+            .delete('/delete-note/')
+            .query({ id: note1.id })
+
+        console.log(response.body);
+        expect(response.body.message).toBe('Note successufuly deleted')
+    })
 })

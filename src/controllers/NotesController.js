@@ -21,9 +21,6 @@ class NoteController {
     const { id } = request.query;
     const { title, body } = request.body;
     const note = await Note.findByPk(id);
-    // console.log(request.body)
-    // console.log(id)
-    // console.log(note);
 
     if (!note) {
       return response.json({ message: 'Note not found' })
@@ -37,6 +34,18 @@ class NoteController {
       note.body = body
     }
     return response.send({ note });
+  }
+
+  async delete(request, response) {
+    const { id } = request.query;
+    const note = await Note.findByPk(id);
+
+    if (!note) {
+      return response.json({ message: 'User not found' });
+    } else {
+      await note.destroy()
+      return response.json({ message: 'Note successufuly deleted' });
+    }
   }
 }
 

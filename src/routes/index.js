@@ -6,5 +6,6 @@ const route = require('express').Router();
 route.get('/show-all', NotesController.showAll);
 route.post('/create-note', NotesController.create);
 route.put('/update-note', NotesController.update);
+route.delete('/delete-note', NotesController.delete);
 
 module.exports = route;
