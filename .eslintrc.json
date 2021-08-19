@@ -3,8 +3,19 @@
         "browser": true,
         "commonjs": true,
         "es2021": true,
-        "node": true
+        "node": true,
+        "jest": true
     },
+    "overrides": [
+        {
+            "files": [
+                "**/*.test.js"
+            ],
+            "env": {
+                "jest": true // now **/*.test.js files' env has both es6 *and* jest
+            }
+        }
+    ],
     "extends": [
         "standard"
     ],

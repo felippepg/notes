@@ -3,7 +3,26 @@ const Note = require('../models/Notes');
 class NoteController {
   async showAll(request, response) {
     const notes = await Note.findAll();
-    return response.send(notes);
+    if (notes.length === 0) {
+      return response.json({ message: 'There are no registered notes' });
+    }
+    return response.json(notes);
+  }
+
+  async showOne(request, response) {
+    const { id } = request.query;
+
+    if (!id) {
+      return response.json({ messge: 'Insert a valid ID' });
+    }
+
+    const note = await Note.findOne({ where: { id } });
+
+    if (!note) {
+      return response.json({ message: 'Note not found' });
+    }
+
+    return response.json(note);
   }
 
   async create(request, response) {
@@ -11,9 +30,9 @@ class NoteController {
     try {
       const note = await Note.create({ title, body });
 
-      return response.status(200).json({ note, message: 'Nota criada com sucesso' });
+      return response.status(200).json({ note, message: 'Note successfully created' });
     } catch (err) {
-      return response.status(400).json({ err, message: 'falha ao criar nota' });
+      return response.status(400).json({ err, message: 'Failed to create note' });
     }
   }
 
@@ -23,17 +42,19 @@ class NoteController {
     const note = await Note.findByPk(id);
 
     if (!note) {
-      return response.json({ message: 'Note not found' })
+      return response.json({ message: 'Note not found' });
     }
 
     if (title) {
-      note.title = title
+      note.title = title;
     }
 
     if (body) {
-      note.body = body
+      note.body = body;
     }
-    return response.send({ note });
+
+    note.save();
+    return response.send({ note, message: 'Note successfully updated' });
   }
 
   async delete(request, response) {
@@ -41,10 +62,10 @@ class NoteController {
     const note = await Note.findByPk(id);
 
     if (!note) {
-      return response.json({ message: 'User not found' });
+      return response.json({ message: 'Note not found' });
     } else {
-      await note.destroy()
-      return response.json({ message: 'Note successufuly deleted' });
+      await note.destroy();
+      return response.json({ message: 'Note successfully deleted' });
     }
   }
 }
