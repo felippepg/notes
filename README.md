@@ -11,7 +11,7 @@
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
-Também é necessário um servidor de banco de dados, nessa aplicação o serviço escolhido foi o [Mysql][https://www.mysql.com/]
+Também é necessário um servidor de banco de dados, nessa aplicação o serviço escolhido foi o [MySQL](https://www.mysql.com/)
 
 ### 🎲 Rodando a API
 
