@@ -25,9 +25,10 @@ $ cd notes
 # Instale as dependências
 $ yarn install
 
+# Acessar o diretorio src/config/database.js e alterar as configurações que diz respeito as conexões de banco de dados
+
 # Criar um banco de dados
 $ yarn run sequelize db:create
-
 
 # Cirar as tabelas da aplicação
 $ yarn run sequelize db:migrate
