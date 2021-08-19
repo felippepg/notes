@@ -23,7 +23,7 @@ $ git clone <https://github.com/felippepg/notes>
 $ cd notes
 
 # Instale as dependências
-$ yarn add
+$ yarn install
 
 # Criar um banco de dados
 $ yarn run sequelize db:create
