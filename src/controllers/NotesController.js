@@ -1,7 +1,9 @@
 const Note = require('../models/Notes');
 
 class NoteController {
+
   async showAll(request, response) {
+    
     const notes = await Note.findAll();
     if (notes.length === 0) {
       return response.json({ message: 'There are no registered notes' });
@@ -10,7 +12,7 @@ class NoteController {
   }
 
   async showOne(request, response) {
-    const { id } = request.query;
+    const { id } = request.params;
 
     if (!id) {
       return response.json({ messge: 'Insert a valid ID' });
@@ -37,7 +39,7 @@ class NoteController {
   }
 
   async update(request, response) {
-    const { id } = request.query;
+    const { id } = request.params;
     const { title, body } = request.body;
     const note = await Note.findByPk(id);
 
@@ -58,7 +60,7 @@ class NoteController {
   }
 
   async delete(request, response) {
-    const { id } = request.query;
+    const { id } = request.params;
     const note = await Note.findByPk(id);
 
     if (!note) {
